@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 
 const Profile = () => {
-  const theme = useTheme(); //  Access current theme
+  const theme = useTheme();
   const { user } = useAuth();
 
   return (
@@ -25,8 +25,8 @@ const Profile = () => {
           sx={{
             p: 5,
             borderRadius: 3,
-            bgcolor: "background.paper", //  Was '#1e293b'
-            border: `1px solid ${theme.palette.divider}`, //  Was '#334155'
+            bgcolor: "background.paper", 
+            border: `1px solid ${theme.palette.divider}`, 
             textAlign: "center",
             boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
           }}
@@ -58,8 +58,8 @@ const Profile = () => {
           <Chip
             label={user?.role || "User"}
             sx={{
-              bgcolor: "action.hover", //  Was '#334155'
-              color: "text.primary", //  Was '#f8fafc'
+              bgcolor: "action.hover", 
+              color: "text.primary", 
               fontWeight: 600,
               borderRadius: 1,
             }}

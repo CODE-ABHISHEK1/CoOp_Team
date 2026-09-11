@@ -9,7 +9,7 @@ import {
   CardContent,
   Chip,
   useTheme,
-} from "@mui/material"; //  Added Card, CardContent, Chip
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { Add } from "@mui/icons-material";
 import { motion } from "framer-motion";
@@ -88,14 +88,14 @@ const ProjectsList = () => {
         ) : (
           projects.map((p) => (
             <Grid item xs={12} sm={6} md={4} key={p._id}>
-              {/*  PROPER CARD COMPONENT WITH POLYMORPHIC LINK */}
+              
               <Card
                 component={Link}
                 to={`/projects/${p._id}`}
                 sx={{
-                  textDecoration: "none !important", // Force remove link underline
-                  display: "block", // Ensure full grid cell width
-                  height: "100%", // Equal height cards in grid
+                  textDecoration: "none !important", 
+                  display: "block",
+                  height: "100%",
                   bgcolor: "background.paper",
                   border: `1px solid ${theme.palette.divider}`,
                   borderRadius: 2,
@@ -124,14 +124,13 @@ const ProjectsList = () => {
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
-                      minHeight: "40px", // Prevent layout shift for short descriptions
+                      minHeight: "40px", 
                     }}
                   >
                     {p.description ||
                       "No description provided for this project."}
                   </Typography>
 
-                  {/*  USE CHIP COMPONENT FOR BADGES */}
                   <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
                     <Chip
                       label={p.status}

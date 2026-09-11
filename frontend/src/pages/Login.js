@@ -168,7 +168,7 @@ const Login = () => {
                     "& .MuiOutlinedInput-root": {
                       bgcolor: "background.paper",
                       borderRadius: 2,
-                      paddingRight: "60px", // Reserves space so text doesn't hide under the button
+                      paddingRight: "60px", 
                       "& fieldset": { borderColor: "divider" },
                     },
                     "& .MuiInputLabel-root": { color: "text.secondary" },

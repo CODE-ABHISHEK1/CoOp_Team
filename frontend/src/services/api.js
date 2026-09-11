@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:5000/api', headers: { 'Content-Type': 'application/json' } });
+//  DYNAMIC BASE URL: Uses env var in production, localhost in dev
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+const api = axios.create({ 
+  baseURL: API_BASE_URL, 
+  headers: { 'Content-Type': 'application/json' } 
+});
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
@@ -11,7 +17,8 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    // Only redirect on auth errors, not network/404 errors
+    if (error.response?.status === 401 && !window.location.pathname.includes('/login')) {
       localStorage.removeItem('token');
       window.location.href = '/login';
     }

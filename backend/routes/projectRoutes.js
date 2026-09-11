@@ -49,8 +49,8 @@ router.post("/", protect, async (req, res) => {
   try {
     const { name, description, status, priority, endDate, members } = req.body;
 
-    console.log("📥 Received members array:", JSON.stringify(members));
-    console.log("👤 Current user ID:", req.user._id.toString());
+    console.log(" Received members array:", JSON.stringify(members));
+    console.log(" Current user ID:", req.user._id.toString());
 
     const projectData = {
       name,
@@ -68,7 +68,7 @@ router.post("/", protect, async (req, res) => {
 
       members.forEach((userId, index) => {
         console.log(
-          `🔍 Processing member[${index}]: "${userId}" (type: ${typeof userId})`,
+          ` Processing member[${index}]: "${userId}" (type: ${typeof userId})`,
         );
 
         const isValidId = mongoose.Types.ObjectId.isValid(userId);
@@ -76,14 +76,14 @@ router.post("/", protect, async (req, res) => {
 
         if (!isValidId) {
           console.warn(
-            `⚠️ SKIPPED [${index}]: Invalid ObjectId format - "${userId}"`,
+            `SKIPPED [${index}]: Invalid ObjectId format - "${userId}"`,
           );
           skippedCount++;
           return;
         }
 
         if (!isNotSelf) {
-          console.warn(`⚠️ SKIPPED [${index}]: Duplicate of current user`);
+          console.warn(` SKIPPED [${index}]: Duplicate of current user`);
           skippedCount++;
           return;
         }
@@ -97,10 +97,10 @@ router.post("/", protect, async (req, res) => {
       });
 
       console.log(
-        `📊 Summary: Added ${addedCount}, Skipped ${skippedCount} out of ${members.length} members`,
+        `Summary: Added ${addedCount}, Skipped ${skippedCount} out of ${members.length} members`,
       );
     } else {
-      console.log("ℹ️ No members array received or empty array");
+      console.log(" No members array received or empty array");
     }
 
     const project = await Project.create(projectData);
@@ -121,7 +121,7 @@ router.post("/", protect, async (req, res) => {
         }),
       );
       await Promise.all(notifPromises);
-      console.log("🔔 Notifications sent to", validMemberIds.length, "members");
+      console.log(" Notifications sent to", validMemberIds.length, "members");
     }
 
     const createdProject = await Project.findById(project._id)
@@ -130,7 +130,7 @@ router.post("/", protect, async (req, res) => {
 
     res.status(201).json(createdProject);
   } catch (error) {
-    console.error("❌ CRITICAL PROJECT CREATION ERROR:", error);
+    console.error(" CRITICAL PROJECT CREATION ERROR:", error);
     res.status(500).json({ message: error.message });
   }
 });

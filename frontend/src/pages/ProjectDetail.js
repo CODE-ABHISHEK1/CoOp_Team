@@ -26,7 +26,7 @@ import {
   Refresh as RefreshIcon,
   ArrowBack,
   Close as CloseIcon,
-  Delete as DeleteIcon, //  Added delete icon
+  Delete as DeleteIcon,
 } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
 import projectService from "../services/projectService";

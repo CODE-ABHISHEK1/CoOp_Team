@@ -8,8 +8,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  background-color: #0f172a; /* Solid Dark Background */
-  color: #ffffff;
+  background-color: #0f172a;
 }
 
 .gradient-text {
