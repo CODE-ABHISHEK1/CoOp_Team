@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
-import { ThemeProvider } from "./context/ThemeContext"; // Now includes MUI provider
+import { ThemeProvider } from "./context/ThemeContext"; 
 import {NotificationProvider} from "./context/NotificationContext"
 import { Navbar, ProtectedRoute } from "./components";
 import Login from "./pages/Login";
